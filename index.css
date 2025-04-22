@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Miniver&display=swap');
+
 *{
     padding: 0;
     margin: 0;
@@ -139,6 +141,7 @@ animation-delay:1.6s;
 .home-detail h1{
     font-size: clamp(3.5rem,10vw,5.5rem);
     color: var(--white-color);
+    font-family: "Miniver",sans-serif;
 }
 .home-detail h2{
     display: inline-block;
