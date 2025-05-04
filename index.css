@@ -87,6 +87,7 @@ section{
     width: 100%;
     height: 100%;
     display: block;
+    overflow: hidden;
 }
 @media (min-width: 768px) {
   .bars-box {
