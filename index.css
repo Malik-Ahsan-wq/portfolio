@@ -86,8 +86,13 @@ section{
     position: absolute;
     width: 100%;
     height: 100%;
-    /* display: flex; */
+    display: block;
 }
+@media (min-width: 768px) {
+  .bars-box {
+    display: flex; /* for tablets and up */
+  }
+};
 
 
 @keyframes hide-bars{
