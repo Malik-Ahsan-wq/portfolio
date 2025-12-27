@@ -76,10 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
       resumeDetails[idx].classList.add("active");
     });
   });
+
   const arrowRight = document.querySelector(
     ".portfolio-box .navigation .arrow-right"
   );
-  console.log(arrowRight);
 
   const arrowLeft = document.querySelector(
     ".portfolio-box .navigation .arrow-left"
@@ -89,9 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const activePortfolio = () => {
     const imgSlide = document.querySelector(".portfolio-carousel .img-slide");
     const portfolioDetails = document.querySelectorAll(".portfolio-detail");
-    imgSlide.style.transform = `translateX(calc(${index * -100}% - ${
-      index * 2
-    }rem))`;
+    imgSlide.style.transform = `translateX(calc(${index * -100}% - ${index * 2}rem))`;
     portfolioDetails.forEach((detail) => {
       detail.classList.remove("active");
     });
@@ -117,8 +115,68 @@ document.addEventListener("DOMContentLoaded", () => {
       index = 0;
       arrowLeft.classList.add("dsiabled");
     }
-    console.log(activePortfolio);
-
     activePortfolio();
   });
+
+  /* ===============================
+     EMAILJS CONTACT FORM (UPDATED)
+     =============================== */
+
+  // ✅ Initialize EmailJS with your Public Key
+  emailjs.init("ERImdSXC5X5cli_J_"); // <-- Replace with your EmailJS public key
+
+  const contactForm = document.getElementById("contactForm");
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      emailjs.sendForm(
+        "service_6kuk5dz",   // <-- Replace with your EmailJS Service ID
+        "template_h9o2b73",  // <-- Replace with your EmailJS Template ID
+        this
+      ).then(
+        () => {
+      Toastify({
+  text: "✅ Message sent successfully!",
+  duration: 3000,
+  gravity: "top",
+  position: "center",
+  style: {
+    background: "#2889a7ff",
+    zIndex: 99999,
+    position: "fixed",
+    width: "300px",      // width
+    height: "50px",      // height
+    display: "flex",     // center text vertically
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "8px", // optional: rounded corners
+    fontSize: "16px"     // optional: font size
+  }
+}).showToast();
+
+
+
+          contactForm.reset();
+        },
+        (error) => {
+         Toastify({
+      text: "✅ Message not sent successfully!",
+      duration: 3000,
+      gravity: "top",
+      position: "center",
+      style: {
+        background: "#a72828ff",
+        zIndex: 99999,
+        position: "fixed"
+      }
+    }).showToast();
+
+
+          console.error("EmailJS Error:", error);
+        }
+      );
+    });
+  }
 });
