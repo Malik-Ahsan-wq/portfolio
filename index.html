@@ -55,9 +55,14 @@
         </h2>
         <p>My name is Ahsan Bashir. I am a MERN + Next.js developer. I have studied ICS (Intermediate in Computer Science,and mechanical Engineering). I am passionate about coding and have created 5 portfolio projects recently. I have also developed 2 e-commerce websites and 2 social media websites. </p>
         <div class="btn-sci">
-           <a href="assets/MERN+NEXTJS.pdf" target="_blank" class="btn" >
+<a href="assets/MERN+NEXTJS.pdf"
+   target="_blank"
+   class="btn"
+   onclick="playSound()">
   My Resume
 </a>
+
+<audio id="clickSound" src="assets/mixkit-sci-fi-click-900.wav" preload="auto"></audio>
 
 
             <div class="sci">
@@ -498,6 +503,11 @@
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="index.js"></script>
+    <script>
+  function playSound() {
+    document.getElementById("clickSound").play();
+  }
+</script>
         
 </body>
 </html>
