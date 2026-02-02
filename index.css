@@ -19,6 +19,12 @@
     --main-color:#53fff7;;
     --white-color:#fff;
     --disabled-color:#fff3;
+    
+    /* === CUSTOM CURSOR COLORS === */
+    --cursor-color: #53fff7;
+    --cursor-color-hover: #00d9d4;
+    --cursor-size: 12px;
+    --cursor-ring-size: 40px;
 
 }
 html{
@@ -26,8 +32,112 @@ html{
 }
 body{
     background: var(--white-color);
+    cursor: none;
 }
+
+/* ===================================== */
+/* === CUSTOM CURSOR STYLES ============ */
+/* ===================================== */
+
+/* Hide default cursor */
+* {
+    cursor: inherit;
+}
+
+/* Main cursor container - inner dot */
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    background: var(--cursor-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999999;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+    box-shadow: 0 0 20px rgba(83, 255, 247, 0.6);
+    transition: width 0.2s ease, height 0.2s ease;
+}
+
+/* Outer ring cursor */
+.cursor-ring {
+    width: var(--cursor-ring-size);
+    height: var(--cursor-ring-size);
+    background: transparent;
+    border: 2px solid var(--cursor-color);
+    box-shadow: none;
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.3s ease;
+}
+
+/* Hover state - ring expands and color intensifies */
+.cursor-ring.cursor-hover {
+    width: calc(var(--cursor-ring-size) * 1.5);
+    height: calc(var(--cursor-ring-size) * 1.5);
+    border-width: 2.5px;
+    border-color: var(--cursor-color-hover);
+    box-shadow: 0 0 20px rgba(0, 217, 212, 0.5);
+}
+
+/* Dot scales down on hover */
+.cursor.cursor-hover {
+    width: calc(var(--cursor-size) * 0.7);
+    height: calc(var(--cursor-size) * 0.7);
+}
+
+/* Trail particle effect */
+.cursor-trail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background: var(--cursor-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999998;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+    will-change: transform, opacity;
+}
+
+/* Trail fade animation */
+@keyframes trailFade {
+    0% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+}
+
+/* Apply trail animation */
+.cursor-trail {
+    animation: trailFade 0.8s ease-out forwards;
+}
+
+/* ===================================== */
+/* === CURSOR ON INTERACTIVE ELEMENTS === */
+/* ===================================== */
+
+/* Links */
+a,
+button,
+input[type="button"],
+input[type="submit"],
+.btn,
+.services-box,
+[role="button"] {
+    cursor: inherit;
+}
+
 header{
+
     position: fixed;
     top:0;
     left: 0;
