@@ -16,7 +16,7 @@
 :root{
     --bg-color:#1f242d;
     --second-bg-color:#323946;
-    --main-color:#53fff7;;
+    --main-color:#2ee9f0;;
     --white-color:#fff;
     --disabled-color:#fff3;
     
@@ -250,14 +250,72 @@ header.active{
     font-size: 3rem;
     color: var(--white-color);
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: all 0.3s ease;
 }
+
+.logo i {
+    font-size: 3.5rem;
+    color: var(--main-color);
+    animation: iconRotate 4s linear infinite;
+}
+
+@keyframes iconRotate {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.15);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.logo:hover {
+    color: var(--main-color);
+}
+
+.logo:hover i {
+    animation: iconBounce 0.6s ease-in-out;
+}
+
+@keyframes iconBounce {
+    0%, 100% {
+        transform: scale(1) rotate(0deg) translateY(0);
+    }
+    50% {
+        transform: scale(1.2) rotate(20deg) translateY(-5px);
+    }
+}
+
 nav a{
     color: var(--white-color);
     margin-left: 3.5rem;
     font-size: 2rem;
     font-weight: 500;
     transition: .5s;
+    position: relative;
+    padding-bottom: 0.5rem;
 }
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--main-color);
+    transition: width 0.5s ease;
+}
+
+nav a:hover::after,nav a.active::after{
+    width: 100%;
+}
+
 nav a:hover,nav a.active{
     color: var(--main-color);
 }
